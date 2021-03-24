@@ -1,0 +1,71 @@
+---
+title: Response.error()
+slug: Web/API/Response/error
+tags:
+- API
+- Error
+- Experimental
+- Fetch
+- Method
+- Reference
+- Response
+translation_of: Web/API/Response/error
+---
+<div>{{APIRef("Fetch")}}</div>
+
+<p>La méthode <strong><code>error()</code></strong> de l'API {{domxref("Response")}} retourne un nouvel objet <code>Réponse</code> associé à une erreur réseau.</p>
+
+<div class="note">
+    <p><strong>Note</strong> : ceci est surtout pertinent dans le cas des <a href="/en-US/docs/Web/API/ServiceWorker_API">ServiceWorkers</a>; la méthode est utilisée pour retourner une erreur si vous le souhaitez. Une réponse d'erreur a son {{domxref("Response.type","type")}} défini en <code>error</code>.</p>
+</div>
+
+<div class="note">
+    <p><strong>Note</strong>: Une <code>Response</code> d'erreur n'est jamais vraiment exposée au script : une telle réponse à un {{domxref("GlobalFetch.fetch","fetch()")}} rejetterait la promesse.</p>
+</div>
+
+<h2 id="Syntax">Synthaxe</h2>
+
+<pre class="syntaxbox">var <em>errorResponse</em> = Response.error();</pre>
+
+<h3 id="Parameters">Paramètres</h3>
+
+<p>Aucun.</p>
+
+<h3 id="Return_value">Valeur retournée</h3>
+
+<p>Un objet {{domxref("Response")}}.</p>
+
+<h2 id="Example">Exemple</h2>
+
+<p>TBD (n'apparait pas encore comme étant supporté).</p>
+
+<h2 id="Specifications">Spécifications</h2>
+
+<table class="standard-table">
+    <thead>
+    <tr>
+        <th scope="col">Spécification</th>
+        <th scope="col">Statut</th>
+        <th scope="col">Commententaire</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{SpecName('Fetch','#dom-response-error','error()')}}</td>
+        <td>{{Spec2('Fetch')}}</td>
+        <td> </td>
+    </tr>
+    </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Compatibilité des navigateurs</h2>
+
+<p>{{Compat("api.Response.error")}}</p>
+
+<h2 id="See_also">Voir aussi</h2>
+
+<ul>
+    <li><a href="/fr/docs/Web/API/Service_Worker_API">API ServiceWorker</a></li>
+    <li><a href="/fr/docs/Web/HTTP/CORS">Contrôle d'accès HTTP (CORS)</a></li>
+    <li><a href="/fr/docs/Web/HTTP">HTTP</a></li>
+</ul>
