@@ -1,0 +1,89 @@
+---
+title: Response.clone()
+slug: Web/API/Response/clone
+tags:
+  - API
+  - Experimental
+  - Fetch
+  - Method
+  - Reference
+  - Response
+  - clone
+translation_of: Web/API/Response/clone
+---
+<div>{{APIRef("Fetch")}}</div>
+
+<p>
+La méthode <strong><code>clone()</code></strong> de l'API {{domxref("Response")}} attribue à une variable un clone identique en tout point d'un objet réponse.
+</p>
+
+<p><code>clone()</code> renvoie une exception {{jsxref("TypeError")}} si le {{domxref("Body")}} de la réponse a déjà été utilisé. La raison principale de l'existance de la méthode <code>clone()</code> est qu'elle permet une utilisation multiple d'objets {{domxref("Body")}} (seulement quand ils sont à usage unique).</p>
+
+<h2 id="Syntax">Synthaxe</h2>
+
+<pre class="syntaxbox">var <var>response2</var> = <var>response1</var>.clone();</pre>
+
+<h3 id="Parameters">Paramètres</h3>
+
+<p>Aucun.</p>
+
+<h3 id="Value">Valeur</h3>
+
+<p>Un objet {{domxref("Response")}}.</p>
+
+<h2 id="Example">Exemple</h2>
+
+<p>
+Dans notre <a href="https://github.com/mdn/fetch-examples/tree/gh-pages/fetch-response-clone">example d'utilisation de la méthode clone de l'API Reponse</a> (voir <a href="https://mdn.github.io/fetch-examples/fetch-response-clone/">la version en ligne</a>) nous créons un nouvel objet {{domxref("Request")}} en utilisant {{domxref("GlobalFetch.fetch","fetch()")}}. Quand la requête est résolue avec succès; nous la clonons et extrayons un blob de chacune des deux réponses grâce à deux appels {{domxref("Body.blob")}} créant ensuite un objet URL à partir des blobs via la méthode {{domxref("URL.createObjectURL")}} pour finalement les afficher dans deux éléments {{htmlelement("img")}} distincs pour finalement les afficher dans deux éléments {{htmlelement("img")}} distincs..
+</p>
+
+
+<pre class="brush: js">var image1 = document.querySelector('.img1');
+var image2 = document.querySelector('.img2');
+
+var myRequest = new Request('flowers.jpg');
+
+fetch(myRequest).then(function(response) {
+  var response2 = response.clone();
+
+  response.blob().then(function(myBlob) {
+    var objectURL = URL.createObjectURL(myBlob);
+    image1.src = objectURL;
+  });
+
+  response2.blob().then(function(myBlob) {
+    var objectURL = URL.createObjectURL(myBlob);
+    image2.src = objectURL;
+  });
+});</pre>
+
+<h2 id="Specifications">Spécifications</h2>
+
+<table class="standard-table">
+ <thead>
+   <tr>
+   <th scope="col">Spécification</th>
+   <th scope="col">Statut</th>
+   <th scope="col">Commententaire</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>{{SpecName('Fetch','#dom-response-clone','clone()')}}</td>
+   <td>{{Spec2('Fetch')}}</td>
+   <td>Définition initiale</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Compatibilité des navigateurs</h2>
+
+<p>{{Compat("api.Response.clone")}}</p>
+
+<h2 id="See_also">Voir aussi</h2>
+
+<ul>
+ <li><a href="/fr/docs/Web/API/Service_Worker_API">API ServiceWorker</a></li>
+ <li><a href="/fr/docs/Web/HTTP/CORS">Contrôle d'accès HTTP (CORS)</a></li>
+ <li><a href="/fr/docs/Web/HTTP">HTTP</a></li>
+</ul>
