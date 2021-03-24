@@ -1,0 +1,73 @@
+---
+title: Response.headers
+slug: Web/API/Response/headers
+tags:
+  - API
+  - Experimental
+  - Fetch
+  - Headers
+  - Property
+  - Reference
+  - Response
+translation_of: Web/API/Response/headers
+---
+<div>{{APIRef("Fetch")}}</div>
+
+<p>
+La propriété en lecture seule <code><strong>headers</strong></code> de l'API {{domxref("Response")}} contient l'objet {{domxref("Headers")}} associé à la réponse.
+</p>
+
+<h2 id="Syntax">Synthaxe</h2>
+
+<pre class="syntaxbox">var <var>myHeaders</var> = <var>response</var>.headers;</pre>
+
+<h3 id="Value">Valeur</h3>
+
+<p>Un objet {{domxref("Headers")}}.</p>
+
+<h2 id="Example">Exemple</h2>
+
+<p>Dans <a href="https://github.com/mdn/fetch-examples/tree/master/fetch-response">notre exemple</a> (voir <a href="https://mdn.github.io/fetch-examples/fetch-response/">la version en ligne</a>) nous avons créé un nouvel objet {{domxref("Request")}} en utilisant le constructeur {{domxref("Request.Request","Request()")}} avec un chemin vers un fichier JPG en argument. On récupère (<em>fetch</em> en anglais) ensuite la requête avec {{domxref("GlobalFetch.fetch","fetch()")}}, on extrait un blob de la réponse grâce à {{domxref("Body.blob")}} pour créer un objet URL via la méthode {{domxref("URL.createObjectURL")}} et l'afficher dans une balise {{htmlelement("img")}}.</p>
+
+<p>Notez que nous affichons les valeurs des <code>headers</code> de la réponse dans la console en haut du bloc de code  <code>fetch()</code></p>
+
+<pre class="brush: js">var myImage = document.querySelector('img');
+
+var myRequest = new Request('flowers.jpg');
+
+fetch(myRequest).then(function(response) {
+  console.log(response.headers); // retourne un objet Headers{} 
+  response.blob().then(function(myBlob) {
+    var objectURL = URL.createObjectURL(myBlob);
+    myImage.src = objectURL;
+  });
+});</pre>
+
+<h2 id="Specifications">Spécifications</h2>
+
+<table class="standard-table">
+ <thead>
+  <tr>
+   <th scope="col">Spécification</th>
+   <th scope="col">Statut</th>
+   <th scope="col">Commentaire</th>
+  </tr>
+ </thead>
+  <tr>
+   <td>{{SpecName('Fetch','#dom-response-headers','headers')}}</td>
+   <td>{{Spec2('Fetch')}}</td>
+   <td>Définition initiale</td>
+  </tr>
+ </tbody>
+</table>
+
+<h2 id="Browser_compatibility">Compatibilité des navigateurs</h2>
+
+<p>{{Compat("api.Response.ok")}}</p>
+
+<h2 id="See_also">Voir aussi</h2>
+
+<ul>
+ <li><a href="/fr/docs/Web/API/Service_Worker_API">API ServiceWorker</a></li>
+ <li><a href="/fr/docs/Web/HTTP/CORS">Contrôle d'accès HTTP (CORS)</a></li>
+ <li><a href="/fr/docs/Web/HTTP">HTTP</a></li>
